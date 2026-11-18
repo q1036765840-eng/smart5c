@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbk.smart5c.mapper.OperateLogMapper">
+
+    <sql id="fields">
+        `operateLog`.`id` AS `id`,
+        `operateLog`.`operate_user` AS `operateUser`,
+        `operateLog`.`operate_time` AS `operateTime`,
+        `operateLog`.`operate_type` AS `operateType`,
+        `operateLog`.`class_name` AS `className`,
+        `operateLog`.`method_name` AS `methodName`,
+        `operateLog`.`method_params` AS `methodParams`,
+        `operateLog`.`return_value` AS `returnValue`,
+        `operateLog`.`cost_time` AS `costTime`,
+        `operateLog`.`operate_desc` AS `operateDesc`
+    </sql>
+
+    <sql id="where">
+        <if test="query.id != null and query.id != ''">
+            AND `operateLog`.`id` = #{query.id}
+        </if>
+        <if test="query.operateUser != null and query.operateUser != ''">
+            AND `operateLog`.`operate_user` LIKE CONCAT('%',#{query.operateUser},'%')
+        </if>
+        <if test="query.operateType != null">
+            AND `operateLog`.`operate_type` = #{query.operateType}
+        </if>
+        <if test="query.className != null and query.className != ''">
+            AND `operateLog`.`class_name` LIKE CONCAT('%',#{query.className},'%')
+        </if>
+        <if test="query.methodName != null and query.methodName != ''">
+            AND `operateLog`.`method_name` LIKE CONCAT('%',#{query.methodName},'%')
+        </if>
+        <if test="query.methodParams != null and query.methodParams != ''">
+            AND `operateLog`.`method_params` LIKE CONCAT('%',#{query.methodParams},'%')
+        </if>
+        <if test="query.returnValue != null and query.returnValue != ''">
+            AND `operateLog`.`return_value` LIKE CONCAT('%',#{query.returnValue},'%')
+        </if>
+        <if test="query.costTime != null">
+            AND `operateLog`.`cost_time` = #{query.costTime}
+        </if>
+        <if test="query.operateDesc != null and query.operateDesc != ''">
+            AND `operateLog`.`operate_desc` LIKE CONCAT('%',#{query.operateDesc},'%')
+        </if>
+    </sql>
+
+    <select id="queryAndPaging" resultType="com.nbk.smart5c.pojo.vo.OperateLogVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_operate_log` AS `operateLog`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+    <select id="queryAll" resultType="com.nbk.smart5c.pojo.vo.OperateLogVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_operate_log` AS `operateLog`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbk.smart5c.mapper.StationMapper">
+
+    <sql id="fields">
+        `station`.`id` AS `id`,
+        `station`.`line_id` AS `lineId`,
+        `station`.`station_code` AS `stationCode`,
+        `station`.`station_name` AS `stationName`,
+        `station`.`description` AS `description`,
+        `station`.`created_user` AS `createdUser`,
+        `station`.`created_time` AS `createdTime`,
+        `station`.`updated_user` AS `updatedUser`,
+        `station`.`updated_time` AS `updatedTime`
+    </sql>
+
+    <sql id="where">
+        <if test="query.id != null and query.id != ''">
+            AND `station`.`id` = #{query.id}
+        </if>
+        <if test="query.lineId != null and query.lineId != ''">
+            AND `station`.`line_id` = #{query.lineId}
+        </if>
+        <if test="query.stationCode != null and query.stationCode != ''">
+            AND `station`.`station_code` LIKE CONCAT('%',#{query.stationCode},'%')
+        </if>
+        <if test="query.stationName != null and query.stationName != ''">
+            AND `station`.`station_name` LIKE CONCAT('%',#{query.stationName},'%')
+        </if>
+        <if test="query.description != null and query.description != ''">
+            AND `station`.`description` LIKE CONCAT('%',#{query.description},'%')
+        </if>
+        <if test="query.createdUser != null and query.createdUser != ''">
+            AND `station`.`created_user` LIKE CONCAT('%',#{query.createdUser},'%')
+        </if>
+        <if test="query.updatedUser != null and query.updatedUser != ''">
+            AND `station`.`updated_user` LIKE CONCAT('%',#{query.updatedUser},'%')
+        </if>
+    </sql>
+
+    <select id="queryAndPaging" resultType="com.nbk.smart5c.pojo.vo.StationVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_station` AS `station`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+    <select id="queryAll" resultType="com.nbk.smart5c.pojo.vo.StationVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_station` AS `station`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+</mapper>

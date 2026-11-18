@@ -1,0 +1,110 @@
+server:
+  port: 8081
+  tomcat:
+    connection-timeout: 600000
+  #配置请求路径
+#  servlet:
+#    context-path: /api
+spring:
+  profiles:
+    active: oceanbase
+  servlet:
+    multipart:
+      max-file-size: 1GB
+      max-request-size: 5GB
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null  # 忽略 null 值
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false   # 允许未知字段
+    visibility:
+      field: ANY  # 允许直接访问字段（可选）
+jasypt:
+  encryptor:
+    # 主密钥：用于加密/解密配置文件中的 ENC(...) 密文
+    # 注意：生产环境建议通过启动参数 -Djasypt.encryptor.password=xxx 覆盖此值
+    password: smart5c-jasypt-key
+    algorithm: PBEWITHHMACSHA512ANDAES_256
+    iv-generator-classname: org.jasypt.iv.RandomIvGenerator
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  configuration:
+    #开启sql日志 //      org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl:
+swagger:
+  enabled: true
+  username: admin
+  password: 123
+inspect:
+  mountpath: /mnt/nfs
+  nfspath: /nbk/app/smart5c/data/rawdata/nfsdata
+  basepath: /nbk/app/smart5c/data/rawdata
+  defectpath: /nbk/app/smart5c/data/defectstorage
+  host: /image
+  defect: /defect
+forest:
+  timeout: 1000000  # 请求超时时间，单位为毫秒，默认值为3000
+ai:
+  ip: 127.0.0.1
+  port: 5000
+  line_location_category: e #线路定位类别
+access:
+  filter:
+    shouldSkipUrls: #安全路径白名单
+      - /doc.html
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      - /webjars/springfox-swagger-ui/**
+      - /v3/api-docs
+      - /web/dataUpload/fileUploadCallback
+      - /webSocket/msg
+      - /smart5cApi/userInfo/login
+      - /smart5cApi/task/autoCreate
+# 5C 智能分析数据同步：订阅各段 EMQX 车次消息，将 NFS 中对应车次数据同步到本地并解析
+# 总开关默认关闭，按环境（如 publish）覆盖 mqtt.enabled 开启；segments 中每个段可单独 disable
+mqtt:
+  enabled: ${MQTT_ENABLED:false}
+  # 从阻塞队列取目录到解析的固定延时时长（毫秒）
+  consume-delay: 2000
+  segments:
+    - name: qd
+      segment-dir: qingdao
+      url: tcp://10.112.15.83:1883
+      topic: 5c/data/ready/qd
+      username: wgdq-ai-qd
+      password: w9d9@Cnz6
+      client-id: wgdq-ai-qd-sync-nbk
+    - name: jn
+      segment-dir: jinan
+      url: tcp://10.112.15.84:1883
+      topic: 5c/data/ready/jn
+      username: wgdq-ai-jn
+      password: w9d9@Cnz6
+      client-id: wgdq-ai-jn-sync-nbk
+    - name: wg
+      segment-dir: weiguan
+      url: tcp://10.112.15.85:1883
+      topic: 5c/data/ready/wg
+      username: wgdq-ai-wg
+      password: w9d9@Cnz6
+      client-id: wgdq-ai-wg-sync-nbk
+sftp:
+  host: 192.168.5.99
+  port: 22
+  username: sftpuser
+  password: ENC(GbswgzhiuTO8fewRT/l31MPk+vjmHXU0OMcYOcbVbuFZTKYh1x+a80gagCCan5Sy)
+file-sync:
+  # 生产语义的匿名同步面，dev 环境默认关闭（配合 access-token 使用，见 C5RawFileSyncAuth）
+  enable: ${FILE_SYNC_ENABLE:true}
+  access-token: ${FILE_SYNC_ACCESS_TOKEN:__C5_OUTACCESS_5C__}
+  host: http://192.168.5.99:15160/anon/task/list?pat=

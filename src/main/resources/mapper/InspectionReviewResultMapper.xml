@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbk.smart5c.mapper.InspectionReviewResultMapper">
+
+    <sql id="fields">
+        `inspectionReviewResult`.`id` AS `id`,
+        `inspectionReviewResult`.`inspection_id` AS `inspectionId`,
+        `inspectionReviewResult`.`image_path` AS `imagePath`,
+        `inspectionReviewResult`.`problem_desc` AS `problemDesc`,
+        `inspectionReviewResult`.`pantograph_status` AS `pantographStatus`,
+        `inspectionReviewResult`.`defect_level` AS `defectLevel`,
+        `inspectionReviewResult`.`image_valid` AS `imageValid`,
+        `inspectionReviewResult`.`marked_regions` AS `markedRegions`,
+        `inspectionReviewResult`.`locomotive_number` AS `locomotiveNumber`,
+        `inspectionReviewResult`.`created_user` AS `createdUser`,
+        `inspectionReviewResult`.`created_time` AS `createdTime`,
+        `inspectionReviewResult`.`updated_user` AS `updatedUser`,
+        `inspectionReviewResult`.`updated_time` AS `updatedTime`
+    </sql>
+
+    <sql id="where">
+        <if test="query.id != null and query.id != ''">
+            AND `inspectionReviewResult`.`id` = #{query.id}
+        </if>
+        <if test="query.inspectionId != null and query.inspectionId != ''">
+            AND `inspectionReviewResult`.`inspection_id` = #{query.inspectionId}
+        </if>
+        <if test="query.imagePath != null and query.imagePath != ''">
+            AND `inspectionReviewResult`.`image_path` LIKE CONCAT('%',#{query.imagePath},'%')
+        </if>
+        <if test="query.problemDesc != null and query.problemDesc != ''">
+            AND `inspectionReviewResult`.`problem_desc` LIKE CONCAT('%',#{query.problemDesc},'%')
+        </if>
+        <if test="query.pantographStatus != null">
+            AND `inspectionReviewResult`.`pantograph_status` = #{query.pantographStatus}
+        </if>
+        <if test="query.defectLevel != null">
+            AND `inspectionReviewResult`.`defect_level` = #{query.defectLevel}
+        </if>
+        <if test="query.imageValid != null and query.imageValid != ''">
+            AND `inspectionReviewResult`.`image_valid` = #{query.imageValid}
+        </if>
+        <if test="query.markedRegions != null and query.markedRegions != ''">
+            AND `inspectionReviewResult`.`marked_regions` LIKE CONCAT('%',#{query.markedRegions},'%')
+        </if>
+        <if test="query.locomotiveNumber != null and query.locomotiveNumber != ''">
+            AND `inspectionReviewResult`.`locomotive_number` LIKE CONCAT('%',#{query.locomotiveNumber},'%')
+        </if>
+        <if test="query.createdUser != null and query.createdUser != ''">
+            AND `inspectionReviewResult`.`created_user` LIKE CONCAT('%',#{query.createdUser},'%')
+        </if>
+        <if test="query.updatedUser != null and query.updatedUser != ''">
+            AND `inspectionReviewResult`.`updated_user` LIKE CONCAT('%',#{query.updatedUser},'%')
+        </if>
+    </sql>
+
+    <select id="queryAndPaging" resultType="com.nbk.smart5c.pojo.vo.InspectionReviewResultVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_inspection_review_result` AS `inspectionReviewResult`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+    <select id="queryAll" resultType="com.nbk.smart5c.pojo.vo.InspectionReviewResultVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_inspection_review_result` AS `inspectionReviewResult`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+    <select id="getInpectionReviewData" resultType="com.nbk.smart5c.pojo.vo.InspectionResultExportVO">
+        select
+        `id`.id
+        inspectionId,`id`.inspection_time,d.device_code,se.section_name,l.line_name,s.station_name,d.pillar_no,id.km_sign,
+        `id`.created_user analyzer,`id`.locomotive_number,1,`id`.pantograph_status,`id`.locomotive_image locomotiveImage
+        from nbk_inspection_data id
+        left join nbk_device d on id.device_id=d.id left join nbk_section se on id.section_id=se.id
+        left join nbk_line l on id.line_id=l.id left join nbk_station s on id.station_id=s.id
+        where `id`.id in
+        <foreach collection="inspectIds" item="inspectId" open="(" close=")" separator=",">
+            #{inspectId}
+        </foreach>
+        order by `id`.inspection_time desc
+    </select>
+
+</mapper>

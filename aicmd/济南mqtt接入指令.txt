@@ -1,0 +1,49 @@
+参考docs/诺比侃智能分析数据同步.pdf，在项目中引入mqtt,目前订阅账号有济南段、青岛段、维管段三个段的Mqtt消费订阅账号，请在配置文件中分别做好配置。mqtt账号如下：
+1. 青岛段Emqx账号
+url: tcp://10.112.15.83:1883
+seg: qd
+topic: 5c/data/ready/qd
+username: wgdq-ai-qd
+password: w9d9@Cnz6
+client-id: wgdq-ai-qd-sync-nbk
+2.
+济南段Emqx账号
+url: tcp://10.112.15.84:1883
+seg: jn
+topic: 5c/data/ready/jn
+username: wgdq-ai-jn
+password: w9d9@Cnz6
+client-id: wgdq-ai-jn-sync-nbk
+3.
+维管段Emqx账号
+url: tcp://10.112.15.85:1883
+seg: wg
+topic: 5c/data/ready/wg
+username: wgdq-ai-wg
+password: w9d9@Cnz6
+client-id: wgdq-ai-wg-sync-nbk
+
+请监听各个订阅主题。如果有新消息,请解析消息体。消息体内容如下：
+{
+"version": 1,
+"seg": "wg",
+"trainPath": "/place/2026/10/26/202610261446_京沪线_余官屯-德州_131_K580+561_CRH380B-3767",
+"trainDir": "202610261446_京沪线_余官屯-德州_131_K580+561_CRH380B-3767",
+"trainId": "WGDQ_5C_880001",
+"trainDate": "2026-10-26 14:46:44",
+"km": "K580+561",
+"plateNumber": "CRH380B-3767",
+"photoCount": 12,
+"sourceHost": "10.10.1.21",
+"timestamp": 1793000000000
+}
+如果解析出的seg是wg,那么trainPath路径前加${inspect.mountpath}/weiguan;${inspect.mountpath}是从配置文件中获取的；
+如果解析出的seg是jn,那么trainPath路径前加${inspect.mountpath}/jinan;
+如果解析出的seg是qd,那么trainPath路径前加${inspect.mountpath}/qingdao;
+解析trainDate并格式化成yyyyMMdd格式字符串trainDateStr
+在${inspect.basepath}下创建 trainDateStr/seg的映射目录(如weiguan、jinan、qingdao)。
+并将该路径加入阻塞队列；
+引入固定延时2秒定时任务，从上述阻塞队列中取一个目录路径，将该目录拷贝到${inspect.basepath}/trainDateStr/seg的映射目录下。
+拷贝成功后最终目录路径如：/nbk/app/smart5c/data/rawdata/20261026/jinan/202610261446_京沪线_余官屯-德州_131_K580+561_CRH380B-3767
+最终目录删除其下图片名是xxx_md.后缀或xxx_sl.后缀的图片，后缀如(png,jpg);即删除图片名以_md、_sl结尾的图片
+将最张目录路径调用taskService.autoCreate开始解析，如果失败，把失败的路径打印出来，不要重新放入队列中。如果成功，继续从队列中取下一条数据开始分析。

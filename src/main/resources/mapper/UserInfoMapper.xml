@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbk.smart5c.mapper.UserInfoMapper">
+
+    <sql id="fields">
+        `userInfo`.`id` AS `id`,
+        `userInfo`.`user_name` AS `userName`,
+        `userInfo`.`password` AS `password`,
+        `userInfo`.`account_no` AS `accountNo`,
+        `userInfo`.`telephone` AS `telephone`,
+        `userInfo`.`avatar` AS `avatar`,
+        `userInfo`.`department_id` AS `departmentId`,
+        `userInfo`.`login_times` AS `loginTimes`,
+        `userInfo`.`email` AS `email`,
+        `userInfo`.`lock_status` AS `lockStatus`,
+        `userInfo`.`created_user` AS `createdUser`,
+        `userInfo`.`created_time` AS `createdTime`,
+        `userInfo`.`updated_user` AS `updatedUser`,
+        `userInfo`.`updated_time` AS `updatedTime`
+    </sql>
+
+    <sql id="where">
+        <if test="query.id != null and query.id != ''">
+            AND `userInfo`.`id` = #{query.id}
+        </if>
+        <if test="query.userName != null and query.userName != ''">
+            AND `userInfo`.`user_name` LIKE CONCAT('%',#{query.userName},'%')
+        </if>
+        <if test="query.password != null and query.password != ''">
+            AND `userInfo`.`password` LIKE CONCAT('%',#{query.password},'%')
+        </if>
+        <if test="query.accountNo != null and query.accountNo != ''">
+            AND `userInfo`.`account_no` LIKE CONCAT('%',#{query.accountNo},'%')
+        </if>
+        <if test="query.telephone != null and query.telephone != ''">
+            AND `userInfo`.`telephone` LIKE CONCAT('%',#{query.telephone},'%')
+        </if>
+        <if test="query.avatar != null and query.avatar != ''">
+            AND `userInfo`.`avatar` LIKE CONCAT('%',#{query.avatar},'%')
+        </if>
+        <if test="query.departmentId != null and query.departmentId != ''">
+            AND `userInfo`.`department_id` = #{query.departmentId}
+        </if>
+        <if test="query.loginTimes != null">
+            AND `userInfo`.`login_times` = #{query.loginTimes}
+        </if>
+        <if test="query.email != null and query.email != ''">
+            AND `userInfo`.`email` LIKE CONCAT('%',#{query.email},'%')
+        </if>
+        <if test="query.lockStatus != null">
+            AND `userInfo`.`lock_status` = #{query.lockStatus}
+        </if>
+        <if test="query.createdUser != null and query.createdUser != ''">
+            AND `userInfo`.`created_user` LIKE CONCAT('%',#{query.createdUser},'%')
+        </if>
+        <if test="query.updatedUser != null and query.updatedUser != ''">
+            AND `userInfo`.`updated_user` LIKE CONCAT('%',#{query.updatedUser},'%')
+        </if>
+    </sql>
+
+    <select id="queryAndPaging" resultType="com.nbk.smart5c.pojo.vo.UserInfoVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_user_info` AS `userInfo`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+    <select id="queryAll" resultType="com.nbk.smart5c.pojo.vo.UserInfoVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_user_info` AS `userInfo`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+</mapper>

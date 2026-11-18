@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbk.smart5c.mapper.MenuMapper">
+
+    <sql id="fields">
+        `menu`.`id` AS `id`,
+        `menu`.`menu_name` AS `menuName`,
+        `menu`.`parent_id` AS `parentId`,
+        `menu`.`order_num` AS `orderNum`,
+        `menu`.`path` AS `path`,
+        `menu`.`component` AS `component`,
+        `menu`.`query_param` AS `queryParam`,
+        `menu`.`route_name` AS `routeName`,
+        `menu`.`is_frame` AS `isFrame`,
+        `menu`.`is_cache` AS `isCache`,
+        `menu`.`menu_type` AS `menuType`,
+        `menu`.`visible` AS `visible`,
+        `menu`.`status` AS `status`,
+        `menu`.`perms` AS `perms`,
+        `menu`.`icon` AS `icon`,
+        `menu`.`create_user` AS `createUser`,
+        `menu`.`create_time` AS `createTime`,
+        `menu`.`update_user` AS `updateUser`,
+        `menu`.`update_time` AS `updateTime`,
+        `menu`.`remark` AS `remark`
+    </sql>
+
+    <sql id="where">
+        <if test="query.id != null and query.id != ''">
+            AND `menu`.`id` = #{query.menuId}
+        </if>
+        <if test="query.menuName != null and query.menuName != ''">
+            AND `menu`.`menu_name` LIKE CONCAT('%',#{query.menuName},'%')
+        </if>
+        <if test="query.parentId != null and query.parentId != ''">
+            AND `menu`.`parent_id` = #{query.parentId}
+        </if>
+        <if test="query.orderNum != null">
+            AND `menu`.`order_num` = #{query.orderNum}
+        </if>
+        <if test="query.path != null and query.path != ''">
+            AND `menu`.`path` LIKE CONCAT('%',#{query.path},'%')
+        </if>
+        <if test="query.component != null and query.component != ''">
+            AND `menu`.`component` LIKE CONCAT('%',#{query.component},'%')
+        </if>
+        <if test="query.queryParam != null and query.queryParam != ''">
+            AND `menu`.`query_param` LIKE CONCAT('%',#{query.queryParam},'%')
+        </if>
+        <if test="query.routeName != null and query.routeName != ''">
+            AND `menu`.`route_name` LIKE CONCAT('%',#{query.routeName},'%')
+        </if>
+        <if test="query.isFrame != null">
+            AND `menu`.`is_frame` = #{query.isFrame}
+        </if>
+        <if test="query.isCache != null">
+            AND `menu`.`is_cache` = #{query.isCache}
+        </if>
+        <if test="query.menuType != null and query.menuType != ''">
+            AND `menu`.`menu_type` LIKE CONCAT('%',#{query.menuType},'%')
+        </if>
+        <if test="query.visible != null and query.visible != ''">
+            AND `menu`.`visible` LIKE CONCAT('%',#{query.visible},'%')
+        </if>
+        <if test="query.status != null and query.status != ''">
+            AND `menu`.`status` LIKE CONCAT('%',#{query.status},'%')
+        </if>
+        <if test="query.perms != null and query.perms != ''">
+            AND `menu`.`perms` LIKE CONCAT('%',#{query.perms},'%')
+        </if>
+        <if test="query.icon != null and query.icon != ''">
+            AND `menu`.`icon` LIKE CONCAT('%',#{query.icon},'%')
+        </if>
+        <if test="query.createUser != null and query.createUser != ''">
+            AND `menu`.`create_user` LIKE CONCAT('%',#{query.createUser},'%')
+        </if>
+        <if test="query.updateUser != null and query.updateUser != ''">
+            AND `menu`.`update_user` LIKE CONCAT('%',#{query.updateUser},'%')
+        </if>
+        <if test="query.remark != null and query.remark != ''">
+            AND `menu`.`remark` LIKE CONCAT('%',#{query.remark},'%')
+        </if>
+    </sql>
+
+    <select id="queryAndPaging" resultType="com.nbk.smart5c.pojo.vo.MenuVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_menu` AS `menu`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+    <select id="queryAll" resultType="com.nbk.smart5c.pojo.vo.MenuVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_menu` AS `menu`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+</mapper>

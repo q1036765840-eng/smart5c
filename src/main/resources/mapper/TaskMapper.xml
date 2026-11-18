@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbk.smart5c.mapper.TaskMapper">
+
+    <sql id="fields">
+        `task`.`id` AS `id`,
+        `task`.`task_name` AS `taskName`,
+        `task`.`task_folder` AS `taskFolder`,
+        `task`.`priority` AS `priority`,
+        `task`.`task_status` AS `taskStatus`,
+        `task`.`analysis_progress` AS `analysisProgress`,
+        `task`.`in_storage` AS `inStorage`,
+        `task`.`file_size` AS `fileSize`,
+        `task`.`ext_name` AS `extName`,
+        `task`.`file_nums` AS `fileNums`,
+        `task`.`import_nums` AS `importNums`,
+        `task`.`analyzed_duration` AS `analyzedDuration`,
+        `task`.`analyzed_pictures` AS `analyzedPictures`,
+        `task`.`data_type` AS `dataType`,
+        `task`.`item_points` AS `itemPoints`,
+        `task`.`ai_alarms` AS `aiAlarms`,
+        `task`.`manual_progress` AS `manualProgress`,
+        `task`.`checkout_rate` AS `checkoutRate`,
+        `task`.`reporting_rate` AS `reportingRate`,
+        `task`.`hit_rate` AS `hitRate`,
+        `task`.`created_user` AS `createdUser`,
+        `task`.`created_time` AS `createdTime`,
+        `task`.`updated_user` AS `updatedUser`,
+        `task`.`updated_time` AS `updatedTime`
+    </sql>
+
+    <sql id="where">
+        <if test="query.id != null and query.id != ''">
+            AND `task`.`id` = #{query.id}
+        </if>
+        <if test="query.taskName != null and query.taskName != ''">
+            AND `task`.`task_name` LIKE CONCAT('%',#{query.taskName},'%')
+        </if>
+        <if test="query.taskFolder != null and query.taskFolder != ''">
+            AND `task`.`task_folder` LIKE CONCAT('%',#{query.taskFolder},'%')
+        </if>
+        <if test="query.priority != null">
+            AND `task`.`priority` = #{query.priority}
+        </if>
+        <if test="query.taskStatus != null">
+            AND `task`.`task_status` = #{query.taskStatus}
+        </if>
+        <if test="query.analysisProgress != null">
+            AND `task`.`analysis_progress` = #{query.analysisProgress}
+        </if>
+        <if test="query.inStorage != null">
+            AND `task`.`in_storage` = #{query.inStorage}
+        </if>
+        <if test="query.fileSize != null">
+            AND `task`.`file_size` = #{query.fileSize}
+        </if>
+        <if test="query.extName != null and query.extName != ''">
+            AND `task`.`ext_name` LIKE CONCAT('%',#{query.extName},'%')
+        </if>
+        <if test="query.fileNums != null and query.fileNums != ''">
+            AND `task`.`file_nums` LIKE CONCAT('%',#{query.fileNums},'%')
+        </if>
+        <if test="query.importNums != null">
+            AND `task`.`import_nums` = #{query.importNums}
+        </if>
+        <if test="query.analyzedDuration != null">
+            AND `task`.`analyzed_duration` = #{query.analyzedDuration}
+        </if>
+        <if test="query.analyzedPictures != null">
+            AND `task`.`analyzed_pictures` = #{query.analyzedPictures}
+        </if>
+        <if test="query.dataType != null">
+            AND `task`.`data_type` = #{query.dataType}
+        </if>
+        <if test="query.itemPoints != null and query.itemPoints != ''">
+            AND `task`.`item_points` LIKE CONCAT('%',#{query.itemPoints},'%')
+        </if>
+        <if test="query.aiAlarms != null">
+            AND `task`.`ai_alarms` = #{query.aiAlarms}
+        </if>
+        <if test="query.manualProgress != null">
+            AND `task`.`manual_progress` = #{query.manualProgress}
+        </if>
+        <if test="query.checkoutRate != null">
+            AND `task`.`checkout_rate` = #{query.checkoutRate}
+        </if>
+        <if test="query.reportingRate != null">
+            AND `task`.`reporting_rate` = #{query.reportingRate}
+        </if>
+        <if test="query.hitRate != null">
+            AND `task`.`hit_rate` = #{query.hitRate}
+        </if>
+        <if test="query.createdUser != null and query.createdUser != ''">
+            AND `task`.`created_user` LIKE CONCAT('%',#{query.createdUser},'%')
+        </if>
+        <if test="query.updatedUser != null and query.updatedUser != ''">
+            AND `task`.`updated_user` LIKE CONCAT('%',#{query.updatedUser},'%')
+        </if>
+    </sql>
+
+    <select id="queryAndPaging" resultType="com.nbk.smart5c.pojo.vo.TaskVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_task` AS `task`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+    <select id="queryAll" resultType="com.nbk.smart5c.pojo.vo.TaskVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_task` AS `task`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+</mapper>

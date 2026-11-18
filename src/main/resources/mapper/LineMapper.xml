@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbk.smart5c.mapper.LineMapper">
+
+    <sql id="fields">
+        `line`.`id` AS `id`,
+        `line`.`section_id` AS `sectionId`,
+        `line`.`line_code` AS `lineCode`,
+        `line`.`line_name` AS `lineName`,
+        `line`.`description` AS `description`,
+        `line`.`direction` AS `direction`,
+        `line`.`created_user` AS `createdUser`,
+        `line`.`created_time` AS `createdTime`,
+        `line`.`updated_user` AS `updatedUser`,
+        `line`.`updated_time` AS `updatedTime`
+    </sql>
+
+    <sql id="where">
+        <if test="query.id != null and query.id != ''">
+            AND `line`.`id` = #{query.id}
+        </if>
+        <if test="query.sectionId != null and query.sectionId != ''">
+            AND `line`.`section_id` = #{query.sectionId}
+        </if>
+        <if test="query.lineCode != null and query.lineCode != ''">
+            AND `line`.`line_code` LIKE CONCAT('%',#{query.lineCode},'%')
+        </if>
+        <if test="query.lineName != null and query.lineName != ''">
+            AND `line`.`line_name` LIKE CONCAT('%',#{query.lineName},'%')
+        </if>
+        <if test="query.description != null and query.description != ''">
+            AND `line`.`description` LIKE CONCAT('%',#{query.description},'%')
+        </if>
+        <if test="query.direction != null">
+            AND `line`.`direction` = #{query.direction}
+        </if>
+        <if test="query.createdUser != null and query.createdUser != ''">
+            AND `line`.`created_user` LIKE CONCAT('%',#{query.createdUser},'%')
+        </if>
+        <if test="query.updatedUser != null and query.updatedUser != ''">
+            AND `line`.`updated_user` LIKE CONCAT('%',#{query.updatedUser},'%')
+        </if>
+    </sql>
+
+    <select id="queryAndPaging" resultType="com.nbk.smart5c.pojo.vo.LineVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_line` AS `line`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+    <select id="queryAll" resultType="com.nbk.smart5c.pojo.vo.LineVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_line` AS `line`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+</mapper>

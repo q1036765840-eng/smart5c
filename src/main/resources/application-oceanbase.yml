@@ -1,0 +1,147 @@
+server:
+  port: 5160
+  tomcat:
+    connection-timeout: 600000
+    keep-alive-timeout: 300000
+    max-connections: 10000
+    threads:
+      max: 200
+      min-spare: 10
+    max-http-header-size: 8192
+    max-http-post-size: 10485760
+spring:
+  servlet:
+    multipart:
+      max-file-size: 1GB
+      max-request-size: 5GB
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null  # 忽略 null 值
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false   # 允许未知字段
+    visibility:
+      field: ANY  # 允许直接访问字段（可选）
+  datasource:
+    url: jdbc:mysql://192.168.5.248:2881/nbk_smart5c?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root@sys
+    password: Nbk4c@159753
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      # 设置是否自动提交事务，默认为true
+      auto-commit: true
+      # 设置用于测试连接的SQL查询语句
+      connection-test-query: SELECT 1
+      # 设置获取数据库连接的超时时间，默认为30秒，单位是秒
+      connection-timeout: 600000
+      # 设置连接在连接池中保持空闲的最长时间，默认为10分钟，单位是秒
+      idle-timeout: 600000
+      # 设置连接在连接池中泄漏检测阈值的最长时间，默认为10分钟，单位是秒
+      leak-detection-threshold: 60000
+      # 设置连接在连接池中允许存在的最长时间，默认为30分钟，单位是秒
+      max-lifetime: 1800000
+      # 设置连接池中允许的最大连接数，默认为10
+      maximum-pool-size: 50
+      # 设置连接池中保持的最小空闲连接数，默认为10
+      minimum-idle: 5
+      # 设置连接池的名称，默认为"HikariPool-1"
+      pool-name: agriculture
+      # 设置连接验证的超时时间，默认为5秒，单位是秒
+      validation-timeout: 300
+jasypt:
+  encryptor:
+    # 主密钥：用于加密/解密配置文件中的 ENC(...) 密文
+    # 注意：生产环境建议通过启动参数 -Djasypt.encryptor.password=xxx 覆盖此值
+    password: smart5c-jasypt-key
+    algorithm: PBEWITHHMACSHA512ANDAES_256
+    iv-generator-classname: org.jasypt.iv.RandomIvGenerator
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml # Mapper XML 文件的位置
+  type-aliases-package: com.nbk.smart5c.entity # 别名包扫描路径，设置实体类所在的包
+  global-config:
+    db-config:
+      id-type: auto # ID生成策略
+      table-prefix: nbk_ # 表前缀
+      field-strategy: not_empty # 字段策略
+      logic-delete-value: 1 # 逻辑已删除值（默认为 1）
+      logic-not-delete-value: 0 # 逻辑未删除值（默认为 0）
+  configuration:
+    map-underscore-to-camel-case: true # 开启驼峰命名规则自动映射
+    #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印SQL语句到控制台
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 不打印SQL语句到控制台
+
+# MyBatis-Plus 日志配置，这里使用了STDOUT_LOGGING实现，你可以根据需要更换为LOG4J等
+logging:
+  config: file:/nbk/app/newsmart5c/server/log4j2.xml
+  level:
+    com.baomidou.mybatisplus: error # MyBatis-Plus日志级别jwt:
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: smart5c-admin-secret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24)
+  tokenHead: Bearer  #JWT负载中拿到开头
+forest:
+  timeout: 1000000 #请求超时时间
+  connect-timeout: 10000
+  read-timeout: 300000
+  max-connections: 500
+  max-route-connections: 100
+swagger:
+  enabled: true
+  username: admin
+  password: 123
+inspect:
+  mountpath: /mnt/nfs
+  nfspath: /nbk/app/newsmart5c/data/rawdata/nfsdata
+  basepath: /nbk/app/newsmart5c/data/rawdata
+  defectpath: /nbk/app/newsmart5c/data/defectstorage
+  host: /image
+  defect: /defect
+sftp:
+  host: 192.168.0.25
+  port: 22
+  username: top
+  password: nbk20154c2c
+access:
+  filter:
+    shouldSkipUrls: #安全路径白名单
+      - /doc.html
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      - //webSocket/ms
+      - /webjars/springfox-swagger-ui/**
+      -
+      - /v3/api-docs
+      - /web/dataUpload/fileUploadCallback
+      - /smart5cApi/userInfo/login
+      - /smart5cApi/task/autoCreate
+      - /smart5cApi/userInfo/login
+      - /webSocket/msg
+data:
+  duration: 20
+ai:
+  ip: 127.0.0.1
+  port: 5000
+  line_location_category: a #线路定位类别
+# 是否启用文件5c文件同步功能
+# 该功能将做以下操作：
+# 1. 从 mqtt 读取原始的 5c 文件基本信息，并将基本信息保存到 info.xml 文件中
+# 2. 从 minio 中下载相应的拍摄图片，图片地址来源于第1步的基本信息
+# 3. 调用 InspectionDataServiceImpl#parseData 方法，对刚刚下载的5C文件进行分
+file-sync:
+  # 生产语义的匿名同步面，dev 环境默认关闭（配合 access-token 使用，见 C5RawFileSyncAuth）
+  enable: true
+  access-token: __C5_OUTACCESS_5C__
+  host: http://192.168.0.25:15160/anon/task/list?pat=
+# 5C 智能分析数据同步：生产环境开启各段 MQTT 订阅（账号见 application.yml 的 mqtt.segments）
+mqtt:
+  enabled: true

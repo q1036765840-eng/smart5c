@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbk.smart5c.mapper.ExportInfoMapper">
+
+    <sql id="fields">
+        `exportInfo`.`id` AS `id`,
+        `exportInfo`.`task_no` AS `taskNo`,
+        `exportInfo`.`source_page` AS `sourcePage`,
+        `exportInfo`.`export_type` AS `exportType`,
+        `exportInfo`.`file_name` AS `fileName`,
+        `exportInfo`.`quantity` AS `quantity`,
+        `exportInfo`.`file_size` AS `fileSize`,
+        `exportInfo`.`query_param` AS `queryParam`,
+        `exportInfo`.`query_api` AS `queryApi`,
+        `exportInfo`.`export_api` AS `exportApi`,
+        `exportInfo`.`export_status` AS `exportStatus`,
+        `exportInfo`.`created_user` AS `createdUser`,
+        `exportInfo`.`created_time` AS `createdTime`,
+        `exportInfo`.`updated_user` AS `updatedUser`,
+        `exportInfo`.`updated_time` AS `updatedTime`
+    </sql>
+
+    <sql id="where">
+        <if test="query.taskNo != null and query.taskNo != ''">
+            AND `exportInfo`.`task_no` LIKE CONCAT('%',#{query.taskNo},'%')
+        </if>
+        <if test="query.sourcePage != null and query.sourcePage != ''">
+            AND `exportInfo`.`source_page` LIKE CONCAT('%',#{query.sourcePage},'%')
+        </if>
+        <if test="query.exportType != null and query.exportType != ''">
+            AND `exportInfo`.`export_type` = #{query.exportType}
+        </if>
+        <if test="query.fileName != null and query.fileName != ''">
+            AND `exportInfo`.`file_name` LIKE CONCAT('%',#{query.fileName},'%')
+        </if>
+        <if test="query.exportStatus != null">
+            AND `exportInfo`.`export_status` = #{query.exportStatus}
+        </if>
+        <if test="query.createdUser != null and query.createdUser != ''">
+            AND `exportInfo`.`created_user` LIKE CONCAT('%',#{query.createdUser},'%')
+        </if>
+        <if test="query.startTime != null">
+            AND `exportInfo`.`created_time` &gt;= #{query.startTime}
+        </if>
+        <if test="query.endTime != null">
+            AND `exportInfo`.`created_time` &lt;= #{query.endTime}
+        </if>
+    </sql>
+
+    <select id="queryAll" resultType="com.nbk.smart5c.pojo.vo.ExportInfoVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_export_info` AS `exportInfo`
+        <where>
+            <include refid="where"/>
+        </where>
+        ORDER BY `exportInfo`.`created_time` DESC, `exportInfo`.`id` DESC
+    </select>
+
+</mapper>

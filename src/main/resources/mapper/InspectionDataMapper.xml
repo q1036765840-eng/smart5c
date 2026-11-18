@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbk.smart5c.mapper.InspectionDataMapper">
+
+    <sql id="fields">
+        `inspectionData`.`id` AS `id`,
+        `inspectionData`.`device_id` AS `deviceId`,
+        `inspectionData`.`section_id` AS `sectionId`,
+        `inspectionData`.`line_id` AS `lineId`,
+        `inspectionData`.`station_id` AS `stationId`,
+        `inspectionData`.`inspection_time` AS `inspectionTime`,
+        `inspectionData`.`locomotive_number` AS `locomotiveNumber`,
+        `inspectionData`.`analysis_status` AS `analysisStatus`,
+        `inspectionData`.`km_sign` AS `kmSign`,
+        `inspectionData`.`pantograph_status` AS `pantographStatus`,
+        `inspectionData`.`locomotive_image` AS `locomotiveImage`,
+        `inspectionData`.`created_user` AS `createdUser`,
+        `inspectionData`.`created_time` AS `createdTime`,
+        `inspectionData`.`updated_user` AS `updatedUser`,
+        `inspectionData`.`updated_time` AS `updatedTime`
+    </sql>
+
+    <sql id="where">
+        <if test="query.id != null and query.id != ''">
+            AND `inspectionData`.`id` = #{query.id}
+        </if>
+        <if test="query.deviceId != null and query.deviceId != ''">
+            AND `inspectionData`.`device_id` = #{query.deviceId}
+        </if>
+        <if test="query.sectionId != null and query.sectionId != ''">
+            AND `inspectionData`.`section_id` = #{query.sectionId}
+        </if>
+        <if test="query.lineId != null and query.lineId != ''">
+            AND `inspectionData`.`line_id` = #{query.lineId}
+        </if>
+        <if test="query.stationId != null and query.stationId != ''">
+            AND `inspectionData`.`station_id` = #{query.stationId}
+        </if>
+        <if test="query.locomotiveNumber != null and query.locomotiveNumber != ''">
+            AND `inspectionData`.`locomotive_number` LIKE CONCAT('%',#{query.locomotiveNumber},'%')
+        </if>
+        <if test="query.analysisStatus != null">
+            AND `inspectionData`.`analysis_status` = #{query.analysisStatus}
+        </if>
+        <if test="query.kmSign != null and query.kmSign != ''">
+            AND `inspectionData`.`km_sign` LIKE CONCAT('%',#{query.kmSign},'%')
+        </if>
+        <!-- 受电工状态可多选：全部(0)不过滤；正常(1)取主表状态；异物/弯曲/崩块/缺失取审核结果标记的缺陷类型；多选取并集 -->
+        <if test="query.pantographStatus != null and query.pantographStatus.size() > 0 and !query.pantographAll">
+            AND (
+            1 = 0
+            <if test="query.pantographNormal">
+                OR `inspectionData`.`pantograph_status` = 1
+            </if>
+            <!-- 所有缺陷类型合并为一个 IN 半连接，避免每种类型一个相关子查询导致主表逐行回表；
+                 CAST(... AS CHAR) 兼容 MySQL json 与 KingbaseES jsonb 的 LIKE 比较 -->
+            <if test="query.pantographDefectTypes != null and query.pantographDefectTypes.size() > 0">
+                OR `inspectionData`.`id` IN (SELECT rr.inspection_id FROM `nbk_inspection_review_result` rr
+                WHERE rr.pantograph_status = 2
+                AND (
+                <foreach collection="query.pantographDefectTypes" item="defectType" separator=" OR ">
+                    CAST(rr.marked_regions AS CHAR) LIKE CONCAT('%', #{defectType}, '%')
+                </foreach>
+                ))
+            </if>
+            )
+        </if>
+        <if test="query.locomotiveImage != null and query.locomotiveImage != ''">
+            AND `inspectionData`.`locomotive_image` LIKE CONCAT('%',#{query.locomotiveImage},'%')
+        </if>
+        <if test="query.createdUser != null and query.createdUser != ''">
+            AND `inspectionData`.`created_user` LIKE CONCAT('%',#{query.createdUser},'%')
+        </if>
+        <if test="query.updatedUser != null and query.updatedUser != ''">
+            AND `inspectionData`.`updated_user` LIKE CONCAT('%',#{query.updatedUser},'%')
+        </if>
+    </sql>
+
+    <select id="queryAndPaging" resultType="com.nbk.smart5c.pojo.vo.InspectionDataVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_inspection_data` AS `inspectionData`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+    <select id="queryAll" resultType="com.nbk.smart5c.pojo.vo.InspectionDataVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_inspection_data` AS `inspectionData`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+</mapper>

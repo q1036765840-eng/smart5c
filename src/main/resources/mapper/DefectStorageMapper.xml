@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbk.smart5c.mapper.DefectStorageMapper">
+
+    <sql id="fields">
+        `defectStorage`.`id` AS `id`,
+        `defectStorage`.`defect_type` AS `defectType`,
+        `defectStorage`.`defect_level` AS `defectLevel`,
+        `defectStorage`.`review_status` AS `reviewStatus`,
+        `defectStorage`.`inspection_time` AS `inspectionTime`,
+        `defectStorage`.`locomotive_number` AS `locomotiveNumber`,
+        `defectStorage`.`section_id` AS `sectionId`,
+        `defectStorage`.`section_name` AS `sectionName`,
+        `defectStorage`.`line_id` AS `lineId`,
+        `defectStorage`.`line_name` AS `lineName`,
+        `defectStorage`.`station_id` AS `stationId`,
+        `defectStorage`.`station_name` AS `stationName`,
+        `defectStorage`.`reviewer_id` AS `reviewerId`,
+        `defectStorage`.`reviewer` AS `reviewer`,
+        `defectStorage`.`review_text` AS `reviewText`,
+        `defectStorage`.`km_sign` AS `kmSign`,
+        `defectStorage`.`pole_no` AS `poleNo`,
+        `defectStorage`.`task_id` AS `taskId`,
+        `defectStorage`.`task_name` AS `taskName`,
+        `defectStorage`.`created_user` AS `createdUser`,
+        `defectStorage`.`created_time` AS `createdTime`,
+        `defectStorage`.`updated_user` AS `updatedUser`,
+        `defectStorage`.`updated_time` AS `updatedTime`
+    </sql>
+
+    <sql id="where">
+        <if test="taskName != null and taskName != ''">
+            AND `defectStorage`.`task_name` LIKE CONCAT('%',#{taskName},'%')
+        </if>
+        <if test="defectType != null and defectType != ''">
+            AND `defectStorage`.`defect_type` LIKE CONCAT('%',#{defectType},'%')
+        </if>
+        <if test="defectLevel != null">
+            AND `defectStorage`.`defect_level` = #{defectLevel}
+        </if>
+        <if test="locomotiveNumber != null and locomotiveNumber != ''">
+            AND `defectStorage`.`locomotive_number` LIKE CONCAT('%',#{locomotiveNumber},'%')
+        </if>
+        <if test="stationName != null and stationName != ''">
+            AND `defectStorage`.`station_name` LIKE CONCAT('%',#{stationName},'%')
+        </if>
+        <if test="lineName != null and lineName != ''">
+            AND `defectStorage`.`line_name` LIKE CONCAT('%',#{lineName},'%')
+        </if>
+        <if test="kmSign != null and kmSign != ''">
+            AND `defectStorage`.`km_sign` LIKE CONCAT('%',#{kmSign},'%')
+        </if>
+        <if test="poleNo != null and poleNo != ''">
+            AND `defectStorage`.`pole_no` LIKE CONCAT('%',#{poleNo},'%')
+        </if>
+        <if test="reviewer != null and reviewer != ''">
+            AND `defectStorage`.`reviewer` LIKE CONCAT('%',#{reviewer},'%')
+        </if>
+        <if test="revieweStatusList != null and revieweStatusList.size() > 0">
+            AND `defectStorage`.`review_status` IN
+            <foreach collection="revieweStatusList" item="status" open="(" separator="," close=")">
+                #{status}
+            </foreach>
+        </if>
+        <if test="startTime != null">
+            AND `defectStorage`.`inspection_time` &gt;= #{startTime}
+        </if>
+        <if test="endTime != null">
+            AND `defectStorage`.`inspection_time` &lt;= #{endTime}
+        </if>
+    </sql>
+
+    <!--    <select id="queryAndPaging" resultType="com.nbk.smart5c.pojo.vo.DefectStorageVO">-->
+    <!--        SELECT-->
+    <!--        <include refid="fields"/>-->
+    <!--        FROM `nbk_defect_storage` AS `defectStorage`-->
+    <!--        <where>-->
+    <!--            <include refid="where"/>-->
+    <!--        </where>-->
+    <!--    </select>-->
+
+    <select id="queryAll" resultType="com.nbk.smart5c.pojo.vo.DefectStorageVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_defect_storage` AS `defectStorage`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+    <select id="queryCurrentPage" resultType="java.lang.Long">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_defect_storage` AS `defectStorage`
+        <where>
+            <include refid="where"/>
+        </where>
+        order by `defectStorage`.`id` desc limit #{pageSize}
+    </select>
+
+</mapper>

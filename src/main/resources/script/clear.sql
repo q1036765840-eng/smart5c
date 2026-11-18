@@ -1,0 +1,12 @@
+truncate table nbk_bureau;
+truncate table nbk_section;
+truncate table nbk_line;
+truncate table nbk_station;
+truncate table nbk_device;
+truncate table nbk_task;
+truncate table nbk_task_file;
+truncate table nbk_inspection_data;
+truncate table nbk_inspection_review_result;
+truncate table nbk_defect_storage;
+TRUNCATE table nbk_file_upload_records;
+TRUNCATE table nbk_folder_create;

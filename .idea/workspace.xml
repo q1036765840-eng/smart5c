@@ -1,0 +1,967 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="GROUP_BY_SEVERITY" value="true" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fa33ff94-051c-46aa-aa43-4b0665b9d7e5" name="Changes" comment="适时分析查询更新">
+      <change beforePath="$PROJECT_DIR$/.claude/settings.local.json" beforeDir="false" afterPath="$PROJECT_DIR$/.claude/settings.local.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nbk/smart5c/service/Impl/InspectionDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nbk/smart5c/service/Impl/InspectionDataServiceImpl.java" afterDir="false" />
+    </list>
+    <list id="46b88f27-a65a-4767-ba19-46774a997531" name="nocommitlist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="460" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="dev" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="ChengDuBureau" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/client/AiClient.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/common/enums/AnalyzeStatusEnum.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/common/utils/ExcelProcessUtil.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/common/utils/JwtTokenUtil.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/common/websocket/WebSocketSessionManager.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/controller/DeviceController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/controller/InspectionDataController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/controller/InspectionReviewResultController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/filter/AuthenticationFilter.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/filter/C5RawFileSyncAuth.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/mapper/InspectionDataMapper.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/mapper/InspectionReviewResultMapper.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/pojo/vo/InspectionReviewResultVO.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/schedules/C5Schedule.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/service/Impl/HomePageServiceImpl.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/service/Impl/InspectionDataServiceImpl.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/service/Impl/InspectionReviewResultServiceImpl.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/service/Impl/TaskServiceImpl.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/service/Impl/UserInfoServiceImpl.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/application-kingbase.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/application-publish.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/application-test.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/application.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/nbk/smart5c/controller/BureauControllerTest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/nbk/smart5c/controller/InspectionReviewResultControllerTest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar:///opt/maven/repository/com/baomidou/mybatis-plus-core/3.5.7/mybatis-plus-core-3.5.7-sources.jar!/com/baomidou/mybatisplus/core/mapper/BaseMapper.java" root0="SKIP_INSPECTION" />
+    <setting file="jar:///opt/maven/repository/com/baomidou/mybatis-plus-extension/3.5.7/mybatis-plus-extension-3.5.7-sources.jar!/com/baomidou/mybatisplus/extension/service/impl/ServiceImpl.java" root0="SKIP_INSPECTION" />
+    <setting file="jar:///opt/maven/repository/com/baomidou/mybatis-plus-extension/3.5.7/mybatis-plus-extension-3.5.7.jar!/com/baomidou/mybatisplus/extension/service/IService.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar:///opt/maven/repository/org/springframework/spring-core/5.3.9/spring-core-5.3.9-sources.jar!/org/springframework/cglib/proxy/MethodProxy.java" root0="SKIP_INSPECTION" />
+    <setting file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/awt/Graphics.class" root0="SKIP_INSPECTION" />
+    <setting file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/javax/imageio/ImageIO.class" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="customMavenHome" value="/opt/maven" />
+        <option name="localRepository" value="/opt/maven/repository" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+        <option name="userSettingsFile" value="/opt/maven/conf/settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.5105060628535965" />
+      <entry key="MS500" value="1.8742117445963324" />
+      <entry key="S2" value="2.1652660212023713" />
+      <entry key="S5" value="3.374340421061023" />
+      <entry key="S10" value="4.816904475011105" />
+      <entry key="S30" value="6.640475437669942" />
+      <entry key="S60" value="7.273242247095171" />
+      <entry key="M2" value="7.6239814063605165" />
+      <entry key="M5" value="7.846436740862646" />
+      <entry key="M10" value="7.922724443326761" />
+      <entry key="M15" value="7.951438981948998" />
+      <entry key="M30" value="8.244843744370328" />
+      <entry key="H1" value="10.97491046202847" />
+      <entry key="H2" value="21.225392946614427" />
+      <entry key="H4" value="44.633532979095946" />
+      <entry key="D1" value="149.93667167730194" />
+      <entry key="W1" value="559.2676797730569" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="4.1976871617612137E-281" />
+      <entry key="M5" value="1.110879465242463E-112" />
+      <entry key="M10" value="1.754766887799082E-56" />
+      <entry key="M15" value="9.655692223959779E-38" />
+      <entry key="M30" value="5.359578420444196E-19" />
+      <entry key="H1" value="1.2667357615807633E-9" />
+      <entry key="H2" value="6.193890158343054E-5" />
+      <entry key="H4" value="0.015605094675703025" />
+      <entry key="D1" value="19.482295200707615" />
+      <entry key="W1" value="278.31098722654826" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.442232283787687" />
+      <entry key="MS500" value="1.8562862699583018" />
+      <entry key="S2" value="2.1593898184873646" />
+      <entry key="S5" value="3.369783697062943" />
+      <entry key="S10" value="4.8135225995545525" />
+      <entry key="S30" value="6.638935016160704" />
+      <entry key="S60" value="7.2724047498473245" />
+      <entry key="M2" value="7.623544391973767" />
+      <entry key="M5" value="7.846257352916291" />
+      <entry key="M10" value="7.922633968081234" />
+      <entry key="M15" value="7.951378469062957" />
+      <entry key="M30" value="8.244812421430893" />
+      <entry key="H1" value="10.97488963924162" />
+      <entry key="H2" value="21.225435569165544" />
+      <entry key="H4" value="44.64911788146751" />
+      <entry key="D1" value="169.41846097790008" />
+      <entry key="W1" value="837.5773944865027" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2oSEfSGiDPcGuAyssUEQY92pGaT" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.AposeCrack.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.Application.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.Applicaton.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.InspectionDataServiceImpl.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MD5.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MeetingServiceImpl.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.OfficeToPDFConverter.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PPTToPDFConverter.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PinyinConverter.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.PortChecker.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PptWatermark.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.RtspScreenshot.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TextFileToPDF.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.UserAttendanceRecordServiceImpl.executor&quot;: &quot;Run&quot;,
+    &quot;JAR 应用程序.smart5c-1.0.jar.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AiClientTest.testAnalysis2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BaseTest.test1.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BaseTest.test2.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BaseTest.test3.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BaseTest.test4.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BureauControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DahuaTest.dhSync.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.FileUploadServiceImplTest.uploadDataPaging_folderListing_returnsAllEntries.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InspectionDataServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InspectionDataServiceImplTest.testDeleteById.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.InspectionDataServiceImplTest.testDeleteById_DataNotFound_Fixed.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InspectionDataServiceImplTest.testDeleteById_Success.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InspectionDataServiceImplTest.testGetReviewData_WithImages.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.InspectionDataServiceImplTest.testQueryAndPaging_WithConditions.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InspectionDataServiceTest.testRegisterUser_Success.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.ProcessFolderValidationTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.smart5c中的com.nbk.smart5c.controller.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.smart5c中的controller.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.smart5c [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.smart5c [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.smart5c [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.smart5c [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.smart5c [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.smart5c [verify].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.smartPolice [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.smartPolice [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.smartPolice [deploy].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.smartPolice [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.smartPolice [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.smartPolice [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.smartPolice [validate].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev__jn__nfs&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/jxb/project/workspace/smart5c/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
+    &quot;应用程序.Application.executor&quot;: &quot;Debug&quot;,
+    &quot;应用程序.Applicaton.executor&quot;: &quot;Debug&quot;,
+    &quot;应用程序.InspectionTableContext.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.JwtTokenUtil.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.MD5.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.XmlParserDOM.executor&quot;: &quot;Run&quot;,
+    &quot;远程 JVM 调试.221远程.executor&quot;: &quot;Debug&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
+  </component>
+  <component name="ReadonlyStatusHandler">
+    <option name="SHOW_DIALOG" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.nbk.smart5c.common.utils" />
+      <recent name="com.nbk.smart5c.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/lib" />
+      <recent name="$PROJECT_DIR$/aicommand" />
+      <recent name="$PROJECT_DIR$/docs" />
+      <recent name="$PROJECT_DIR$/sql" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/target" />
+      <recent name="$PROJECT_DIR$/src/main/resources/fonts" />
+      <recent name="$PROJECT_DIR$/lib" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.nbk.smart5c.pojo.bo" />
+      <recent name="com.nbk.smart5c.service" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.nbk.smart5c.client" />
+      <recent name="com.nbk.smart5c.pojo.vo" />
+      <recent name="com.nbk.smart5c.filter" />
+      <recent name="com.nbk.smart5c.common.enums" />
+      <recent name="com.nbk.smart5c.pojo.bo" />
+    </key>
+  </component>
+  <component name="RunManager" selected="应用程序.Application">
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.nbk.smart5c.Application" />
+      <module name="smart5c" />
+      <option name="PROGRAM_PARAMETERS" value="--spring.profiles.active=publish" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nbk.smart5c.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JwtTokenUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.nbk.smart5c.common.utils.JwtTokenUtil" />
+      <module name="smart5c" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nbk.smart5c.common.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MD5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.nbk.smart5c.common.utils.MD5" />
+      <module name="smart5c" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nbk.smart5c.common.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="XmlParserDOM" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.nbk.smart5c.common.utils.XmlParserDOM" />
+      <module name="smart5c" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nbk.smart5c.common.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InspectionDataServiceTest.testRegisterUser_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="smart5c" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nbk.smart5c.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.nbk.smart5c.service" />
+      <option name="MAIN_CLASS_NAME" value="com.nbk.smart5c.service.InspectionDataServiceTest" />
+      <option name="METHOD_NAME" value="testRegisterUser_Success" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="221远程" type="Remote">
+      <module name="smart5c" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="192.168.0.25" />
+      <option name="PORT" value="15218" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="15218" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.InspectionDataServiceTest.testRegisterUser_Success" />
+      <item itemvalue="应用程序.MD5" />
+      <item itemvalue="应用程序.JwtTokenUtil" />
+      <item itemvalue="应用程序.XmlParserDOM" />
+      <item itemvalue="应用程序.Application" />
+      <item itemvalue="远程 JVM 调试.221远程" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="应用程序.Application" />
+        <item itemvalue="应用程序.XmlParserDOM" />
+        <item itemvalue="应用程序.JwtTokenUtil" />
+        <item itemvalue="应用程序.MD5" />
+        <item itemvalue="JUnit.InspectionDataServiceTest.testRegisterUser_Success" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.24374.151" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.24374.151" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fa33ff94-051c-46aa-aa43-4b0665b9d7e5" name="Changes" comment="" />
+      <changelist id="46b88f27-a65a-4767-ba19-46774a997531" name="nocommitlist" comment="" />
+      <created>1730854679829</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1730854679829</updated>
+    </task>
+    <task id="LOCAL-00001" summary="update README comment">
+      <created>1730854757905</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1730854757905</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update README comment">
+      <created>1730855370249</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730855370249</updated>
+    </task>
+    <task id="LOCAL-00003" summary="公安AI功能开发">
+      <created>1732238759877</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1732238759877</updated>
+    </task>
+    <task id="LOCAL-00004" summary="公安AI功能开发更新">
+      <created>1733468931379</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733468931379</updated>
+    </task>
+    <task id="LOCAL-00005" summary="公安AI功能开发更新">
+      <created>1736926988298</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1736926988298</updated>
+    </task>
+    <task id="LOCAL-00006" summary="公安AI功能开发更新">
+      <created>1736931379144</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1736931379144</updated>
+    </task>
+    <task id="LOCAL-00007" summary="公安AI功能开发更新">
+      <created>1739845528103</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1739845528103</updated>
+    </task>
+    <task id="LOCAL-00008" summary="公安AI功能开发更新">
+      <created>1741937829710</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1741937829710</updated>
+    </task>
+    <task id="LOCAL-00300" summary="新需求更新">
+      <option name="closed" value="true" />
+      <created>1792748746213</created>
+      <option name="number" value="00300" />
+      <option name="presentableId" value="LOCAL-00300" />
+      <option name="project" value="LOCAL" />
+      <updated>1792748746213</updated>
+    </task>
+    <task id="LOCAL-00301" summary="误报，登录次数更新">
+      <option name="closed" value="true" />
+      <created>1792750158379</created>
+      <option name="number" value="00301" />
+      <option name="presentableId" value="LOCAL-00301" />
+      <option name="project" value="LOCAL" />
+      <updated>1792750158379</updated>
+    </task>
+    <task id="LOCAL-00302" summary="误报，登录次数更新">
+      <option name="closed" value="true" />
+      <created>1792978631587</created>
+      <option name="number" value="00302" />
+      <option name="presentableId" value="LOCAL-00302" />
+      <option name="project" value="LOCAL" />
+      <updated>1792978631588</updated>
+    </task>
+    <task id="LOCAL-00303" summary="误报、分析失败处理">
+      <option name="closed" value="true" />
+      <created>1792978782396</created>
+      <option name="number" value="00303" />
+      <option name="presentableId" value="LOCAL-00303" />
+      <option name="project" value="LOCAL" />
+      <updated>1792978782396</updated>
+    </task>
+    <task id="LOCAL-00304" summary="误报、分析失败处理">
+      <option name="closed" value="true" />
+      <created>1792980501779</created>
+      <option name="number" value="00304" />
+      <option name="presentableId" value="LOCAL-00304" />
+      <option name="project" value="LOCAL" />
+      <updated>1792980501779</updated>
+    </task>
+    <task id="LOCAL-00305" summary="分页查询更新">
+      <option name="closed" value="true" />
+      <created>1792982129766</created>
+      <option name="number" value="00305" />
+      <option name="presentableId" value="LOCAL-00305" />
+      <option name="project" value="LOCAL" />
+      <updated>1792982129766</updated>
+    </task>
+    <task id="LOCAL-00306" summary="受电工状态加导出进度">
+      <option name="closed" value="true" />
+      <created>1792995120635</created>
+      <option name="number" value="00306" />
+      <option name="presentableId" value="LOCAL-00306" />
+      <option name="project" value="LOCAL" />
+      <updated>1792995120635</updated>
+    </task>
+    <task id="LOCAL-00307" summary="websocket更新">
+      <option name="closed" value="true" />
+      <created>1792995158358</created>
+      <option name="number" value="00307" />
+      <option name="presentableId" value="LOCAL-00307" />
+      <option name="project" value="LOCAL" />
+      <updated>1792995158358</updated>
+    </task>
+    <task id="LOCAL-00308" summary="巡查数据导出更新">
+      <option name="closed" value="true" />
+      <created>1792999195325</created>
+      <option name="number" value="00308" />
+      <option name="presentableId" value="LOCAL-00308" />
+      <option name="project" value="LOCAL" />
+      <updated>1792999195325</updated>
+    </task>
+    <task id="LOCAL-00309" summary="巡查数据导出更新及复核更新">
+      <option name="closed" value="true" />
+      <created>1793005416967</created>
+      <option name="number" value="00309" />
+      <option name="presentableId" value="LOCAL-00309" />
+      <option name="project" value="LOCAL" />
+      <updated>1793005416967</updated>
+    </task>
+    <task id="LOCAL-00310" summary="导出缺陷去重">
+      <option name="closed" value="true" />
+      <created>1793006046693</created>
+      <option name="number" value="00310" />
+      <option name="presentableId" value="LOCAL-00310" />
+      <option name="project" value="LOCAL" />
+      <updated>1793006046693</updated>
+    </task>
+    <task id="LOCAL-00311" summary="导出进度">
+      <option name="closed" value="true" />
+      <created>1793061094793</created>
+      <option name="number" value="00311" />
+      <option name="presentableId" value="LOCAL-00311" />
+      <option name="project" value="LOCAL" />
+      <updated>1793061094793</updated>
+    </task>
+    <task id="LOCAL-00312" summary="导出优化">
+      <option name="closed" value="true" />
+      <created>1793064620077</created>
+      <option name="number" value="00312" />
+      <option name="presentableId" value="LOCAL-00312" />
+      <option name="project" value="LOCAL" />
+      <updated>1793064620077</updated>
+    </task>
+    <task id="LOCAL-00313" summary="实时分析导出逻辑更新">
+      <option name="closed" value="true" />
+      <created>1793067159635</created>
+      <option name="number" value="00313" />
+      <option name="presentableId" value="LOCAL-00313" />
+      <option name="project" value="LOCAL" />
+      <updated>1793067159635</updated>
+    </task>
+    <task id="LOCAL-00314" summary="确认缺陷，导出调整">
+      <option name="closed" value="true" />
+      <created>1793069905709</created>
+      <option name="number" value="00314" />
+      <option name="presentableId" value="LOCAL-00314" />
+      <option name="project" value="LOCAL" />
+      <updated>1793069905709</updated>
+    </task>
+    <task id="LOCAL-00315" summary="新需求开发">
+      <option name="closed" value="true" />
+      <created>1793091494422</created>
+      <option name="number" value="00315" />
+      <option name="presentableId" value="LOCAL-00315" />
+      <option name="project" value="LOCAL" />
+      <updated>1793091494422</updated>
+    </task>
+    <task id="LOCAL-00316" summary="误报更新">
+      <option name="closed" value="true" />
+      <created>1793093348284</created>
+      <option name="number" value="00316" />
+      <option name="presentableId" value="LOCAL-00316" />
+      <option name="project" value="LOCAL" />
+      <updated>1793093348284</updated>
+    </task>
+    <task id="LOCAL-00317" summary="导出更新">
+      <option name="closed" value="true" />
+      <created>1793093371216</created>
+      <option name="number" value="00317" />
+      <option name="presentableId" value="LOCAL-00317" />
+      <option name="project" value="LOCAL" />
+      <updated>1793093371216</updated>
+    </task>
+    <task id="LOCAL-00318" summary="websocket优化">
+      <option name="closed" value="true" />
+      <created>1793101619926</created>
+      <option name="number" value="00318" />
+      <option name="presentableId" value="LOCAL-00318" />
+      <option name="project" value="LOCAL" />
+      <updated>1793101619926</updated>
+    </task>
+    <task id="LOCAL-00319" summary="实时分析导出添加进度">
+      <option name="closed" value="true" />
+      <created>1793148640234</created>
+      <option name="number" value="00319" />
+      <option name="presentableId" value="LOCAL-00319" />
+      <option name="project" value="LOCAL" />
+      <updated>1793148640234</updated>
+    </task>
+    <task id="LOCAL-00320" summary="settings.local.json更新">
+      <option name="closed" value="true" />
+      <created>1793148666184</created>
+      <option name="number" value="00320" />
+      <option name="presentableId" value="LOCAL-00320" />
+      <option name="project" value="LOCAL" />
+      <updated>1793148666184</updated>
+    </task>
+    <task id="LOCAL-00321" summary="误报代码优化">
+      <option name="closed" value="true" />
+      <created>1793149632676</created>
+      <option name="number" value="00321" />
+      <option name="presentableId" value="LOCAL-00321" />
+      <option name="project" value="LOCAL" />
+      <updated>1793149632676</updated>
+    </task>
+    <task id="LOCAL-00322" summary="误报代码优化">
+      <option name="closed" value="true" />
+      <created>1793149855311</created>
+      <option name="number" value="00322" />
+      <option name="presentableId" value="LOCAL-00322" />
+      <option name="project" value="LOCAL" />
+      <updated>1793149855311</updated>
+    </task>
+    <task id="LOCAL-00323" summary="获取审核数据优化">
+      <option name="closed" value="true" />
+      <created>1793150947389</created>
+      <option name="number" value="00323" />
+      <option name="presentableId" value="LOCAL-00323" />
+      <option name="project" value="LOCAL" />
+      <updated>1793150947389</updated>
+    </task>
+    <task id="LOCAL-00324" summary="获取审核数据优化">
+      <option name="closed" value="true" />
+      <created>1793151180257</created>
+      <option name="number" value="00324" />
+      <option name="presentableId" value="LOCAL-00324" />
+      <option name="project" value="LOCAL" />
+      <updated>1793151180257</updated>
+    </task>
+    <task id="LOCAL-00325" summary="导出更新">
+      <option name="closed" value="true" />
+      <created>1793166756868</created>
+      <option name="number" value="00325" />
+      <option name="presentableId" value="LOCAL-00325" />
+      <option name="project" value="LOCAL" />
+      <updated>1793166756868</updated>
+    </task>
+    <task id="LOCAL-00326" summary="导出更新">
+      <option name="closed" value="true" />
+      <created>1793173357141</created>
+      <option name="number" value="00326" />
+      <option name="presentableId" value="LOCAL-00326" />
+      <option name="project" value="LOCAL" />
+      <updated>1793173357141</updated>
+    </task>
+    <task id="LOCAL-00327" summary="导出更新">
+      <option name="closed" value="true" />
+      <created>1793183433765</created>
+      <option name="number" value="00327" />
+      <option name="presentableId" value="LOCAL-00327" />
+      <option name="project" value="LOCAL" />
+      <updated>1793183433765</updated>
+    </task>
+    <task id="LOCAL-00328" summary="配置更新">
+      <option name="closed" value="true" />
+      <created>1793183462213</created>
+      <option name="number" value="00328" />
+      <option name="presentableId" value="LOCAL-00328" />
+      <option name="project" value="LOCAL" />
+      <updated>1793183462214</updated>
+    </task>
+    <task id="LOCAL-00329" summary="新需求开发">
+      <option name="closed" value="true" />
+      <created>1793324015470</created>
+      <option name="number" value="00329" />
+      <option name="presentableId" value="LOCAL-00329" />
+      <option name="project" value="LOCAL" />
+      <updated>1793324015470</updated>
+    </task>
+    <task id="LOCAL-00330" summary="实时分析添加队列">
+      <option name="closed" value="true" />
+      <created>1793340931804</created>
+      <option name="number" value="00330" />
+      <option name="presentableId" value="LOCAL-00330" />
+      <option name="project" value="LOCAL" />
+      <updated>1793340931804</updated>
+    </task>
+    <task id="LOCAL-00331" summary="巡查数据查询更新">
+      <option name="closed" value="true" />
+      <created>1793350959718</created>
+      <option name="number" value="00331" />
+      <option name="presentableId" value="LOCAL-00331" />
+      <option name="project" value="LOCAL" />
+      <updated>1793350959718</updated>
+    </task>
+    <task id="LOCAL-00332" summary="枚举类漏洞修复">
+      <option name="closed" value="true" />
+      <created>1793587773889</created>
+      <option name="number" value="00332" />
+      <option name="presentableId" value="LOCAL-00332" />
+      <option name="project" value="LOCAL" />
+      <updated>1793587773890</updated>
+    </task>
+    <task id="LOCAL-00333" summary="枚举类漏洞修复">
+      <option name="closed" value="true" />
+      <created>1793588863987</created>
+      <option name="number" value="00333" />
+      <option name="presentableId" value="LOCAL-00333" />
+      <option name="project" value="LOCAL" />
+      <updated>1793588863987</updated>
+    </task>
+    <task id="LOCAL-00334" summary="受电工查询状态枚举">
+      <option name="closed" value="true" />
+      <created>1793665891537</created>
+      <option name="number" value="00334" />
+      <option name="presentableId" value="LOCAL-00334" />
+      <option name="project" value="LOCAL" />
+      <updated>1793665891537</updated>
+    </task>
+    <task id="LOCAL-00335" summary="济南nfs">
+      <option name="closed" value="true" />
+      <created>1793693974313</created>
+      <option name="number" value="00335" />
+      <option name="presentableId" value="LOCAL-00335" />
+      <option name="project" value="LOCAL" />
+      <updated>1793693974313</updated>
+    </task>
+    <task id="LOCAL-00336" summary="nfs分析">
+      <option name="closed" value="true" />
+      <created>1793703031018</created>
+      <option name="number" value="00336" />
+      <option name="presentableId" value="LOCAL-00336" />
+      <option name="project" value="LOCAL" />
+      <updated>1793703031018</updated>
+    </task>
+    <task id="LOCAL-00337" summary="代码优化">
+      <option name="closed" value="true" />
+      <created>1793783510529</created>
+      <option name="number" value="00337" />
+      <option name="presentableId" value="LOCAL-00337" />
+      <option name="project" value="LOCAL" />
+      <updated>1793783510529</updated>
+    </task>
+    <task id="LOCAL-00338" summary="代码优化">
+      <option name="closed" value="true" />
+      <created>1793871564840</created>
+      <option name="number" value="00338" />
+      <option name="presentableId" value="LOCAL-00338" />
+      <option name="project" value="LOCAL" />
+      <updated>1793871564840</updated>
+    </task>
+    <task id="LOCAL-00339" summary="mqtt逻辑更新">
+      <option name="closed" value="true" />
+      <created>1794905044466</created>
+      <option name="number" value="00339" />
+      <option name="presentableId" value="LOCAL-00339" />
+      <option name="project" value="LOCAL" />
+      <updated>1794905044466</updated>
+    </task>
+    <task id="LOCAL-00340" summary="适时分析查询更新">
+      <option name="closed" value="true" />
+      <created>1794918405391</created>
+      <option name="number" value="00340" />
+      <option name="presentableId" value="LOCAL-00340" />
+      <option name="project" value="LOCAL" />
+      <updated>1794918405391</updated>
+    </task>
+    <option name="localTasksCounter" value="341" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="dev_sh" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="巡查数据导出更新及复核更新" />
+    <MESSAGE value="导出缺陷去重" />
+    <MESSAGE value="导出进度" />
+    <MESSAGE value="导出优化" />
+    <MESSAGE value="实时分析导出逻辑更新" />
+    <MESSAGE value="确认缺陷，导出调整" />
+    <MESSAGE value="误报更新" />
+    <MESSAGE value="websocket优化" />
+    <MESSAGE value="实时分析导出添加进度" />
+    <MESSAGE value="settings.local.json更新" />
+    <MESSAGE value="误报代码优化" />
+    <MESSAGE value="获取审核数据优化" />
+    <MESSAGE value="导出更新" />
+    <MESSAGE value="配置更新" />
+    <MESSAGE value="新需求开发" />
+    <MESSAGE value="实时分析添加队列" />
+    <MESSAGE value="修复确认缺陷未入库缺陷库问题&#10;&#10;受电弓状态由 Integer 改为 String 后，isConfirmedDefect 仍按&#10;Integer 常量比较，条件恒为 false 导致 saveDefectStorage 从未执行。&#10;&#10;Co-Authored-By: Claude Opus 4.7 &lt;noreply@anthropic.com&gt;" />
+    <MESSAGE value="巡查数据查询更新" />
+    <MESSAGE value="枚举类漏洞修复" />
+    <MESSAGE value="受电工查询状态枚举" />
+    <MESSAGE value="济南nfs" />
+    <MESSAGE value="nfs分析" />
+    <MESSAGE value="代码优化" />
+    <MESSAGE value="mqtt逻辑更新" />
+    <MESSAGE value="适时分析查询更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="适时分析查询更新" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/controller/InspectionDataController.java</url>
+          <line>277</line>
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/common/utils/ApiUtils.java</url>
+          <line>289</line>
+          <option name="timeStamp" value="131" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/service/Impl/InspectionDataServiceImpl.java</url>
+          <line>942</line>
+          <option name="timeStamp" value="132" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/common/utils/WaterMarkUtils.java</url>
+          <line>278</line>
+          <option name="timeStamp" value="211" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/common/utils/WaterMarkUtils.java</url>
+          <line>284</line>
+          <option name="timeStamp" value="214" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/filter/C5RawFileSyncAuth.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="216" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/schedules/C5Schedule.java</url>
+          <line>204</line>
+          <option name="timeStamp" value="218" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/schedules/C5Schedule.java</url>
+          <line>444</line>
+          <option name="timeStamp" value="219" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/mapper/InspectionReviewResultMapper.java</url>
+          <line>202</line>
+          <option name="timeStamp" value="232" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/nbk/smart5c/service/Impl/InspectionDataServiceImpl.java</url>
+          <line>1639</line>
+          <option name="timeStamp" value="254" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="com.nbk.smart5c.exception.ServiceException" package="com.nbk.smart5c.exception" />
+          <option name="timeStamp" value="130" />
+        </breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog>
+          <selected-grouping-rules>
+            <grouping-rule id="XBreakpointGroupingByClassRule" />
+            <grouping-rule id="by-file" />
+          </selected-grouping-rules>
+        </breakpoints-dialog>
+      </breakpoints-dialog>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.nbk.smartPolice.entity.Meeting" memberName="hostId" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="    ANALYZED(2,&quot;已分析&quot;),&#10;    REVIEWING(3,&quot;审核中&quot;),&#10;    REVIEWED(4,&quot;已审核&quot;);" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/smart5c$BaseTest_test1.ic" NAME="BaseTest.test1 Coverage Results" MODIFIED="1770170916221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.nbk.smart5c.service.*</FILTER>
+    </SUITE>
+  </component>
+</project>

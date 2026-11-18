@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbk.smart5c.mapper.SectionMapper">
+
+    <sql id="fields">
+        `section`.`id` AS `id`,
+        `section`.`section_code` AS `sectionCode`,
+        `section`.`section_name` AS `sectionName`,
+        `section`.`description` AS `description`,
+        `section`.`created_user` AS `createdUser`,
+        `section`.`created_time` AS `createdTime`,
+        `section`.`updated_user` AS `updatedUser`,
+        `section`.`updated_time` AS `updatedTime`
+    </sql>
+
+    <sql id="where">
+        <if test="query.id != null and query.id != ''">
+            AND `section`.`id` = #{query.id}
+        </if>
+        <if test="query.sectionCode != null and query.sectionCode != ''">
+            AND `section`.`section_code` LIKE CONCAT('%',#{query.sectionCode},'%')
+        </if>
+        <if test="query.sectionName != null and query.sectionName != ''">
+            AND `section`.`section_name` LIKE CONCAT('%',#{query.sectionName},'%')
+        </if>
+        <if test="query.description != null and query.description != ''">
+            AND `section`.`description` LIKE CONCAT('%',#{query.description},'%')
+        </if>
+        <if test="query.createdUser != null and query.createdUser != ''">
+            AND `section`.`created_user` LIKE CONCAT('%',#{query.createdUser},'%')
+        </if>
+        <if test="query.updatedUser != null and query.updatedUser != ''">
+            AND `section`.`updated_user` LIKE CONCAT('%',#{query.updatedUser},'%')
+        </if>
+    </sql>
+
+    <select id="queryAndPaging" resultType="com.nbk.smart5c.pojo.vo.SectionVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_section` AS `section`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+    <select id="queryAll" resultType="com.nbk.smart5c.pojo.vo.SectionVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_section` AS `section`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+</mapper>

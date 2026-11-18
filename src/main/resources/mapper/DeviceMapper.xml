@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbk.smart5c.mapper.DeviceMapper">
+
+    <sql id="fields">
+        `device`.`id` AS `id`,
+        `device`.`station_id` AS `stationId`,
+        `device`.`device_code` AS `deviceCode`,
+        `device`.`device_type` AS `deviceType`,
+        `device`.`installation_date` AS `installationDate`,
+        `device`.`manufacturer` AS `manufacturer`,
+        `device`.`pillar_no` AS `pillarNo`,
+        `device`.`model` AS `model`,
+        `device`.`status` AS `status`,
+        `device`.`last_maintenance_date` AS `lastMaintenanceDate`,
+        `device`.`next_maintenance_date` AS `nextMaintenanceDate`,
+        `device`.`parameters` AS `parameters`,
+        `device`.`created_user` AS `createdUser`,
+        `device`.`updated_user` AS `updatedUser`,
+        `device`.`created_time` AS `createdTime`,
+        `device`.`updated_time` AS `updatedTime`
+    </sql>
+
+    <sql id="where">
+        <if test="query.id != null and query.id != ''">
+            AND `device`.`id` = #{query.id}
+        </if>
+        <if test="query.stationId != null and query.stationId != ''">
+            AND `device`.`station_id` = #{query.stationId}
+        </if>
+        <if test="query.deviceCode != null and query.deviceCode != ''">
+            AND `device`.`device_code` LIKE CONCAT('%',#{query.deviceCode},'%')
+        </if>
+        <if test="query.deviceType != null and query.deviceType != ''">
+            AND `device`.`device_type` LIKE CONCAT('%',#{query.deviceType},'%')
+        </if>
+        <if test="query.installationDate != null">
+            AND `device`.`installation_date` = #{query.installationDate}
+        </if>
+        <if test="query.manufacturer != null and query.manufacturer != ''">
+            AND `device`.`manufacturer` LIKE CONCAT('%',#{query.manufacturer},'%')
+        </if>
+        <if test="query.pillarNo != null and query.pillarNo != ''">
+            AND `device`.`pillar_no` LIKE CONCAT('%',#{query.pillarNo},'%')
+        </if>
+        <if test="query.model != null and query.model != ''">
+            AND `device`.`model` LIKE CONCAT('%',#{query.model},'%')
+        </if>
+        <if test="query.status != null">
+            AND `device`.`status` = #{query.status}
+        </if>
+        <if test="query.lastMaintenanceDate != null">
+            AND `device`.`last_maintenance_date` = #{query.lastMaintenanceDate}
+        </if>
+        <if test="query.nextMaintenanceDate != null">
+            AND `device`.`next_maintenance_date` = #{query.nextMaintenanceDate}
+        </if>
+        <if test="query.parameters != null and query.parameters != ''">
+            AND `device`.`parameters` LIKE CONCAT('%',#{query.parameters},'%')
+        </if>
+        <if test="query.createdUser != null and query.createdUser != ''">
+            AND `device`.`created_user` LIKE CONCAT('%',#{query.createdUser},'%')
+        </if>
+        <if test="query.updatedUser != null and query.updatedUser != ''">
+            AND `device`.`updated_user` LIKE CONCAT('%',#{query.updatedUser},'%')
+        </if>
+    </sql>
+
+    <select id="queryAndPaging" resultType="com.nbk.smart5c.pojo.vo.DeviceVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_device` AS `device`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+    <select id="queryAll" resultType="com.nbk.smart5c.pojo.vo.DeviceVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_device` AS `device`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+</mapper>

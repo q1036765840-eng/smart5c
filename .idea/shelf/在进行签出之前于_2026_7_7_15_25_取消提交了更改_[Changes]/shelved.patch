@@ -1,0 +1,19 @@
+Index: src/main/resources/application-dev.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server:\n  tomcat:\n    connection-timeout: 600000\n    keep-alive-timeout: 300000\n    max-connections: 10000\n    threads:\n      max: 200\n      min-spare: 10\n    max-http-header-size: 8192\n    max-http-post-size: 10485760\n  port: 8082\nspring:\n  datasource:\n    #          url: jdbc:mysql://localhost:3306/intelligent_c2?createDatabaseIfNotExist=true&autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true\n#    url: jdbc:mysql://192.168.5.242:3306/smart_city?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC\n    url: jdbc:mysql://192.168.5.99:3306/nbk_smart_5c?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai\n    #    url:  jdbc:mysql://localhost:3306/intelligent_c2?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC\n    username: root\n    password: 123456\n    driver-class-name: com.mysql.cj.jdbc.Driver\n    hikari:\n      # 设置是否自动提交事务，默认为true\n      auto-commit: true\n      # 设置用于测试连接的SQL查询语句\n      connection-test-query: SELECT 1\n      # 设置获取数据库连接的超时时间，默认为30秒，单位是秒\n      connection-timeout: 600000\n      # 设置连接在连接池中保持空闲的最长时间，默认为10分钟，单位是秒\n      idle-timeout: 600000\n      # 设置连接在连接池中泄漏检测阈值的最长时间，默认为10分钟，单位是秒\n      leak-detection-threshold: 60000\n      # 设置连接在连接池中允许存在的最长时间，默认为30分钟，单位是秒\n      max-lifetime: 1800000\n      # 设置连接池中允许的最大连接数，默认为10\n      maximum-pool-size: 50\n      # 设置连接池中保持的最小空闲连接数，默认为10\n      minimum-idle: 5\n      # 设置连接池的名称，默认为\"HikariPool-1\"\n      pool-name: agriculture\n      # 设置连接验证的超时时间，默认为5秒，单位是秒\n      validation-timeout: 300\n\nmybatis-plus:\n  mapper-locations: classpath:/mapper/*.xml # Mapper XML 文件的位置\n  type-aliases-package: com.nbk.smart5c.entity # 别名包扫描路径，设置实体类所在的包\n  global-config:\n    db-config:\n      id-type: auto # ID生成策略\n      table-prefix: nbk_ # 表前缀\n      field-strategy: not_empty # 字段策略\n      logic-delete-value: 1 # 逻辑已删除值（默认为 1）\n      logic-not-delete-value: 0 # 逻辑未删除值（默认为 0）\n  configuration:\n    map-underscore-to-camel-case: true # 开启驼峰命名规则自动映射\n#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印SQL语句到控制台\n    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl # 不打印SQL语句到控制台\n\n# MyBatis-Plus 日志配置，这里使用了STDOUT_LOGGING实现，你可以根据需要更换为LOG4J等\nlogging:\n  level:\n    com.baomidou.mybatisplus: error # MyBatis-Plus日志级别jwt:\njwt:\n  tokenHeader: Authorization #JWT存储的请求头\n  secret: smart5c-admin-secret #JWT加解密使用的密钥\n  expiration: 604800 #JWT的超期限时间(60*60*24)\n  tokenHead: Bearer  #JWT负载中拿到开头\n\n\n# 是否启用文件5c文件同步功能(最初是为成都局5C开发)\n# 默认【关闭】此功能，以便作为配置参考范本\n\n# 该功能将做以下操作：\n# 1. 从 mqtt 读取原始的 5c 文件基本信息，并将基本信息保存到 info.xml 文件中\n# 2. 从 minio 中下载相应的拍摄图片，图片地址来源于第1步的基本信息\n# 3. 调用 InspectionDataServiceImpl#parseData 方法，对刚刚下载的5C文件进行分析\nfile-sync:\n  enable: false\n  mqtt:\n    host: tcp://192.168.5.93:1883\n    username: user-5c\n    password: password\n    topic: cd5c\n    # 消息处理线程的数量，一般建议为: 1.5 × CpuCores\n    consumer-threads: 10\n  minio:\n    endpoint: http://47.109.53.148:9000\n    access-key: user-5c\n    secret-key: password
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/application-dev.yml b/src/main/resources/application-dev.yml
+--- a/src/main/resources/application-dev.yml	(revision 339ebee7d0ef6ed346eac4b9a92a98c732e06fc9)
++++ b/src/main/resources/application-dev.yml	(date 1783403840387)
+@@ -74,7 +74,7 @@
+ # 2. 从 minio 中下载相应的拍摄图片，图片地址来源于第1步的基本信息
+ # 3. 调用 InspectionDataServiceImpl#parseData 方法，对刚刚下载的5C文件进行分析
+ file-sync:
+-  enable: false
++  enable: true
+   mqtt:
+     host: tcp://192.168.5.93:1883
+     username: user-5c

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nbk.smart5c.mapper.BureauMapper">
+
+    <sql id="fields">
+        `bureau`.`id` AS `id`,
+        `bureau`.`bureau_code` AS `bureauCode`,
+        `bureau`.`bureau_name` AS `bureauName`,
+        `bureau`.`description` AS `description`,
+        `bureau`.`created_user` AS `createdUser`,
+        `bureau`.`created_time` AS `createdTime`,
+        `bureau`.`updated_user` AS `updatedUser`,
+        `bureau`.`updated_time` AS `updatedTime`
+    </sql>
+
+    <sql id="where">
+        <if test="query.id != null and query.id != ''">
+            AND `bureau`.`id` = #{query.id}
+        </if>
+        <if test="query.bureauCode != null and query.bureauCode != ''">
+            AND `bureau`.`bureau_code` LIKE CONCAT('%',#{query.bureauCode},'%')
+        </if>
+        <if test="query.bureauName != null and query.bureauName != ''">
+            AND `bureau`.`bureau_name` LIKE CONCAT('%',#{query.bureauName},'%')
+        </if>
+        <if test="query.description != null and query.description != ''">
+            AND `bureau`.`description` LIKE CONCAT('%',#{query.description},'%')
+        </if>
+        <if test="query.createdUser != null and query.createdUser != ''">
+            AND `bureau`.`created_user` LIKE CONCAT('%',#{query.createdUser},'%')
+        </if>
+        <if test="query.updatedUser != null and query.updatedUser != ''">
+            AND `bureau`.`updated_user` LIKE CONCAT('%',#{query.updatedUser},'%')
+        </if>
+    </sql>
+
+    <select id="queryAndPaging" resultType="com.nbk.smart5c.pojo.vo.BureauVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_bureau` AS `bureau`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+    <select id="queryAll" resultType="com.nbk.smart5c.pojo.vo.BureauVO">
+        SELECT
+        <include refid="fields"/>
+        FROM `nbk_bureau` AS `bureau`
+        <where>
+            <include refid="where"/>
+        </where>
+    </select>
+
+</mapper>

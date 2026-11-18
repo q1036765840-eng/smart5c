@@ -1,0 +1,1 @@
+ALTER TABLE nbk_inspection_data ADD image_num INT NULL COMMENT '图片数';
